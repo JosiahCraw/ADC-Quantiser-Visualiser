@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Digital Message Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">  
+    <link href="css/all.css" rel="stylesheet">
+    <script src="./Chart.js" defer></script>
+    <script src="./math.min.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="all" id="all">
+        <div class="header">
+            <div id="access" class="settingsBtn">
+                <a href="javascript:void(0)"
+                   class="openBtn" onclick="openSettings()"><i class="fas fa-cog"></i></a>
+            </div>
+        </div>
+        <div id="settings" class="settings">
+            <a href="javascript:void(0)" 
+                class="closeButton" onclick="closeSettings()"><i class="fas fa-times-circle"></i></a>
+                <div class="mathIn" id="mathClass">
+                    <input type="text" class="mathBox" id="mathBox" placeholder="Function">
+                    <input type="button" class="mathSub" id="mathSun" value="Submit" onclick="updateMath();">
+                </div>
+            <div class="A1">
+                <p id="a1Val">A₁ Value:</p>
+                <input type="range" min="0" max="100z" value="10"
+                class="slider" id="a1">
+            </div>
+            <div class="A2">
+                <p id="a2Val">A₂ Value:</p>
+                <input type="range" min="0" max="100" value="10"
+                class="slider" id="a2">
+            </div>
+            <div class="freq1">
+                <p id="freqVal">Frequency:</p>
+                <input type="range" min="1" max="500" value="10"
+                class="slider" id="w1">
+            </div>
+            <div class="sampleFreq">
+                <p id="sampleVal">Sample Frequency:</p>
+                <input type="range" min="1" max="1000" value="200"
+                class="slider" id="sampleW">
+            </div>
+            <div class="bits">
+                    <p id="bitVal">ADC Bits:</p>
+                <input type="range" min="1" max="32" value="4"
+                class="slider" id="bitsVal">
+            </div>
+            <div class="adcvals">
+                <div class="selectors">
+                    <p id="adcMin">ADC Min:</p>
+                    <input type="number" name="adcmin" min="-500" max="500"
+                    value="0" id="minVal" class="min">
+                </div>
+                <div class="selectors">
+                    <p id="adcMax">ADC Max:</p>
+                    <input type="number" name="adcmax" min="-500" max="500"
+                    value="5" id="maxVal" class="max">
+                </div>
+            </div>
+            <div class="switches">
+                <div class="switchSet">
+                    <p>Enable Message Signal</p>
+                    <label class="switch">
+                        <input type="checkbox" id="messageEn" onclick="messageEnClick()" checked="true">
+                        <span class="slideSwitch round"></span>
+                    </label>
+                </div>
+            <div class="switchSet">
+                    <p>Enable Sampled Signal</p>
+                    <label class="switch">
+                        <input type="checkbox" id="signalEn" onclick="signalEnClick()" checked="true">
+                        <span class="slideSwitch round"></span>
+                    </label>
+                </div>
+            <div class="switchSet">
+                    <p>Show Quantised Signal</p>
+                    <label class="switch">
+                        <input type="checkbox" id="quantEn" onclick="quantEnClick()" checked="false">
+                        <span class="slideSwitch round"></span>
+                    </label>
+                </div>
+            <div class="switchSet">
+                    <p>Show ADC Area</p>
+                    <label class="switch">
+                        <input type="checkbox" id="adcEn" onclick="adcEnClick()" checked="true">
+                        <span class="slideSwitch round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="page" onclick="closeSettings();">
+            <div class="Chart", id="Chart">
+                <canvas id=chart height="700px" width="800px" ></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
